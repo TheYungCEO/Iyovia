@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    @apply bg-black min-h-screen;
+    background-image: 
+      linear-gradient(to bottom,
+        rgba(52, 167, 115, 0.1),
+        rgba(158, 255, 0, 0.05)
+      ),
+      linear-gradient(to right, rgba(158, 255, 0, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(158, 255, 0, 0.1) 1px, transparent 1px);
+    background-size: 100% 100%, 50px 50px, 50px 50px;
+  }
+}
+
+@layer utilities {
+  .hub-gradient {
+    background: linear-gradient(90deg, #34A773, #9eff00, #34A773);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: flow 3s linear infinite;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+  }
+
+  .mega-text {
+    font-size: clamp(2.5rem, 12vw, 8rem);
+    line-height: 1;
+    letter-spacing: 0;
+    background: linear-gradient(to right, #fff, #9eff00, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: 
+      0 0 40px rgba(158, 255, 0, 0.4),
+      0 0 80px rgba(158, 255, 0, 0.2);
+    animation: flow 5s linear infinite;
+  }
+
+  .opportunities-text {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 5vw, 4rem);
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    text-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.4),
+      0 0 40px rgba(52, 167, 115, 0.4);
+  }
+
+  .text-glow {
+    text-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.4),
+      0 0 40px rgba(158, 255, 0, 0.4),
+      0 0 60px rgba(158, 255, 0, 0.2);
+  }
+
+  .section-heading {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    background: linear-gradient(to right, #fff, #9eff00, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: flow 5s linear infinite;
+  }
+
+  .sub-text {
+    font-size: clamp(2rem, 5vw, 5rem);
+    line-height: 0.95;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .glow-button {
+    position: relative;
+    background: linear-gradient(90deg, #34A773, #9eff00, #34A773);
+    background-size: 200% auto;
+    animation: flow 3s linear infinite;
+    transition: all 0.3s ease;
+    border-radius: 9999px !important;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .glow-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 9999px !important;
+    padding: 2px;
+    background: linear-gradient(90deg, #34A773, #9eff00, #34A773);
+    background-size: 200% auto;
+    animation: flow 3s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .glow-button:hover {
+    box-shadow: 
+      0 0 20px rgba(158, 255, 0, 0.4),
+      0 0 40px rgba(158, 255, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .radial-pulse {
+    background: radial-gradient(circle, rgba(158, 255, 0, 0.2) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.3; }
+  }
+
+  @keyframes glow {
+    0%, 100% { 
+      filter: drop-shadow(0 0 20px rgba(158, 255, 0, 0.4))
+             drop-shadow(0 0 40px rgba(158, 255, 0, 0.2));
+    }
+    50% { 
+      filter: drop-shadow(0 0 30px rgba(158, 255, 0, 0.6))
+             drop-shadow(0 0 60px rgba(158, 255, 0, 0.3));
+    }
+  }
+}
